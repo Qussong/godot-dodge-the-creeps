@@ -12,7 +12,7 @@ config_version=5
 
 config/name="your first 2D game-Dodge the Creeps"
 config/tags=PackedStringArray("2d", "4.7.2")
-run/main_scene="uid://dv3vhe41vxkof"
+run/main_scene="uid://cfgj3p08tmnsm"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

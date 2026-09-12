@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://dhsfiw7xa62xv"]
+
+[ext_resource type="Script" uid="uid://cwk5m8ugy4d7k" path="res://mob.gd" id="1_1qmh0"]
+[ext_resource type="Texture2D" uid="uid://bkjwv6lw76o0u" path="res://art/enemyFlyingAlt_1.png" id="1_b3mxk"]
+[ext_resource type="Texture2D" uid="uid://cd67oxslx5q1n" path="res://art/enemyFlyingAlt_2.png" id="2_1qmh0"]
+[ext_resource type="Texture2D" uid="uid://twx84ubufeek" path="res://art/enemySwimming_1.png" id="3_gfurk"]
+[ext_resource type="Texture2D" uid="uid://c4evk017jc2ah" path="res://art/enemySwimming_2.png" id="4_ieysi"]
+[ext_resource type="Texture2D" uid="uid://cluy61a58d6uu" path="res://art/enemyWalking_1.png" id="5_cixyi"]
+[ext_resource type="Texture2D" uid="uid://bleu7b0g8v8dv" path="res://art/enemyWalking_2.png" id="6_7ulmv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sx3qd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_b3mxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1qmh0")
+}],
+"loop": 1,
+"name": &"fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_gfurk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ieysi")
+}],
+"loop": 1,
+"name": &"swim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_cixyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7ulmv")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8a8hb"]
+radius = 36.0
+height = 98.0
+
+[node name="Mob" type="RigidBody2D" unique_id=417655132]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_1qmh0")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=404211098]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_sx3qd")
+animation = &"walk"
+frame = 1
+frame_progress = 0.115274616
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=652950977]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_8a8hb")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=820161930]
+rect = Rect2(-49, -36, 98, 72)
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
